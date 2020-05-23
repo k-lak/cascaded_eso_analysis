@@ -16,6 +16,6 @@ function [ z_hat5_p ] = newEsoObserverFifthStage( input )
          0 0 0];
     Bo = [0; -b_hat; 0];
 
-    z_hat5_p = Ao*z_hat5 + Bo*1/b_hat^2*u - Bo*1/b_hat*(z_hat(3)+z_hat2(3)+z_hat3(3)+z_hat4(3)) + L*(z_hat4(1) - z_hat5(1));
+    z_hat5_p = Ao*z_hat5 + Bo*u - Bo*1/b_hat*(z_hat(3)+z_hat2(3)+z_hat3(3)+z_hat4(3)) + L*(z_hat4(1) - z_hat5(1));
 end
 

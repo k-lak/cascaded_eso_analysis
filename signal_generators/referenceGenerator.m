@@ -13,7 +13,7 @@ function [out] = referenceGenerator(input)
         refSigSecondDerivative = 0;
         refSigThirdDerivative = 0;
     elseif(RefSig.type == 2)
-        refSig = RefSig.sine.amplitude*sin(RefSig.sine.pulsation*t+RefSig.sine.phase);
+        refSig = RefSig.sine.amplitude*sin(RefSig.sine.pulsation*t+RefSig.sine.phase)+RefSig.sine.bias;
         refSigDerivative = RefSig.sine.amplitude*RefSig.sine.pulsation*cos(RefSig.sine.pulsation*t+RefSig.sine.phase);
         refSigSecondDerivative = -RefSig.sine.amplitude*RefSig.sine.pulsation^2*sin(RefSig.sine.pulsation*t+RefSig.sine.phase);;
         refSigThirdDerivative = -RefSig.sine.amplitude*RefSig.sine.pulsation^3*cos(RefSig.sine.pulsation*t+RefSig.sine.phase);;

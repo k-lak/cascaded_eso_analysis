@@ -15,6 +15,6 @@ function [ z_hat4_p ] = newEsoObserverFourthStage( input )
          0 0 0];
     Bo = [0; -b_hat; 0];
 
-    z_hat4_p = Ao*z_hat4 + Bo*1/b_hat^2*u - Bo*1/b_hat*(z_hat(3)+z_hat2(3)+z_hat3(3)) + L*(z_hat3(1) - z_hat4(1));
+    z_hat4_p = Ao*z_hat4 + Bo*u - Bo*1/b_hat*(z_hat(3)+z_hat2(3)+z_hat3(3)) + L*(z_hat3(1) - z_hat4(1));
 end
 

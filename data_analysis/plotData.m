@@ -1,7 +1,16 @@
 global Controller Plant RefSig Sensor
 b_hat = Controller.adrc.inputMatrixEstimate;
-B = Plant.B;
-A = Plant.A;
+
+if(Plant.type == 1)
+    B = Plant.transferFunction.B;
+    A = Plant.transferFunction.A;
+elseif(Plant.type == 2)
+    B = Plant.dcdcBuckConverter.B;
+    A = Plant.dcdcBuckConverter.A;
+else
+    B = Plant.transferFunction.B;
+    A = Plant.transferFunction.A;
+end
 
 readLogsoutData;
 
@@ -46,8 +55,8 @@ if(Sensor.quantization.enabled == 0)
 else
     stairs(y.Values.Time, e.Values.Data,'LineWidth',1.5);
 end
-plot(t, refSig.Values.Data(:,1).*0+tunnel,'--','Color',[.8 .5 .5],'LineWidth',1.5);
-plot(t, refSig.Values.Data(:,1).*0-tunnel,'--','Color',[.8 .5 .5],'LineWidth',1.5);
+% plot(t, refSig.Values.Data(:,1).*0+tunnel,'--','Color',[.8 .5 .5],'LineWidth',1.5);
+% plot(t, refSig.Values.Data(:,1).*0-tunnel,'--','Color',[.8 .5 .5],'LineWidth',1.5);
 title('Control error');
 legend('Clear','Estimated','Measured')
 xlabel('t[s]');
