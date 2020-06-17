@@ -66,7 +66,12 @@ ylabel('y');
 subplot(3,2,3);
 hold on;
 grid on;
-realDisturbance = refSigSecondDerivative.Values.Data-(A(2,:)*(x.Values.Data(:,1:2))')'+(b_hat - B(2,:))*u.Values.Data-B(2,:)*dp.Values.Data;
+if(Plant.type == 4)
+    g = (1+0.2*tanh((x.Values.Time-2)))./(abs(x.Values.Data(:,1))+1);
+    realDisturbance = refSigSecondDerivative.Values.Data-(A(2,:)*(x.Values.Data(:,1:2))')'+(b_hat - g).*u.Values.Data-g.*dp.Values.Data;
+else
+    realDisturbance = refSigSecondDerivative.Values.Data-(A(2,:)*(x.Values.Data(:,1:2))')'+(b_hat - B(2,:))*u.Values.Data-B(2,:)*dp.Values.Data;
+end
 plot(xp.Values.Time, realDisturbance,'LineWidth',1.5);
 plot(z_hat.Values.Time, z_hat.Values.Data(:,3),'LineWidth',1.5);
 title('Total disturbance');
@@ -79,7 +84,7 @@ subplot(3,2,4);
 hold on;
 grid on;
 plot(e.Values.Time,z_hat.Values.Data(:,1)-refSig.Values.Data+x.Values.Data(:,1),'LineWidth',1.5);
-plot(z_hat.Values.Time,z_hat.Values.Data(:,1)-refSigDerivative.Values.Data+x.Values.Data(:,2),'LineWidth',1.5);
+plot(z_hat.Values.Time,z_hat.Values.Data(:,2)-refSigDerivative.Values.Data+x.Values.Data(:,2),'LineWidth',1.5);
 plot(z_hat.Values.Time,z_hat.Values.Data(:,3)-realDisturbance,'LineWidth',1.5);
 title('Observation errors');
 xlabel('t[s]');

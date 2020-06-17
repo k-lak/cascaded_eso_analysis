@@ -3,7 +3,7 @@ global ProcessDisturbance
 ProcessDisturbance.enabled = 1; % Disturbance: 0 -off
                          %              1 - on
                          
-ProcessDisturbance.type = 6;  % Type of disturbance: 1 - step value
+ProcessDisturbance.type = 2;  % Type of disturbance: 1 - step value
                        %                             2 - sine wave 
                        %                             3 - different
                        %                             disturbances
@@ -17,9 +17,9 @@ ProcessDisturbance.step.initialValue = 0;
 ProcessDisturbance.step.finalValue = 2.0;
 % For sine wave:
 ProcessDisturbance.sine.startTime = 3.5;
-ProcessDisturbance.sine.amplitude = 0.3;
+ProcessDisturbance.sine.amplitude = 5;
 ProcessDisturbance.sine.bias = 0.00;
-ProcessDisturbance.sine.pulsation = 15;
+ProcessDisturbance.sine.pulsation = 9;
 ProcessDisturbance.sine.phase = 0;
 
 % For double sine wave:

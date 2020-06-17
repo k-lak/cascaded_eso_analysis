@@ -1,6 +1,6 @@
 %% Observers
 global Observer
-Observer.type = 22; % 1 - ESO, n=3
+Observer.type = 1; % 1 - ESO, n=3
                    % 2 - ESO, n=4
                    % 3 - ESO, n=5
                    % 4 - ESO, n=6
@@ -24,7 +24,7 @@ Observer.type = 22; % 1 - ESO, n=3
                    % 22 - cascade RESO, p=2
 % ESO Properties
 global ESO
-w0 = 460;
+w0 = 400;
 ESO.w0 = w0;
 ESO.gainVectorN3 = [3*w0, 3*w0^2, w0^3]';
 ESO.gainVectorN4 = [4*w0, 6*w0^2, 4*w0^3, w0^4]';
